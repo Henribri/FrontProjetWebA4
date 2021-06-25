@@ -13,6 +13,8 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
+    "swiper": "^5.4.5",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
