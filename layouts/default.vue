@@ -2,15 +2,18 @@
   <div>
       <div class="navbar"> 
       Ceseat
-      <div class="navbar-onglet"> Commander </div>
-      <div class="navbar-onglet"> Mes commandes </div>
-      <div class="navbar-onglet"> Les restaurants </div>
+        <div class="navbar-onglet"> Commander </div>
+        <div class="navbar-onglet"> Mes commandes </div>
+        <div class="navbar-onglet"> Les restaurants </div>
+        <NuxtLink to="/shopv1">
+          <div class="navbar-onglet"> Le panier </div>
+        </NuxtLink>
       </div>
     <Nuxt />
       <div class="footer"> 
-      <div class="footer-onglet"> A propos </div>
-      <div class="footer-onglet"> Nous contacter </div>
-      <div class="footer-onglet"> Support </div>
+        <div class="footer-onglet"> A propos </div>
+        <div class="footer-onglet"> Nous contacter </div>
+        <div class="footer-onglet"> Support </div>
       </div>
 
   </div>
@@ -58,3 +61,4 @@
 
 }
 </style>
+
