@@ -1,13 +1,13 @@
 <template>
   <div>
-      <div class="navbar"> 
+      <div class="navbar">
       Ceseat
       <div class="navbar-onglet"> Commander </div>
       <div class="navbar-onglet"> Mes commandes </div>
       <div class="navbar-onglet"> Les restaurants </div>
       </div>
     <Nuxt />
-      <div class="footer"> 
+      <div class="footer">
       <div class="footer-onglet"> A propos </div>
       <div class="footer-onglet"> Nous contacter </div>
       <div class="footer-onglet"> Support </div>
@@ -17,6 +17,14 @@
 </template>
 
 <style>
+
+  html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; ;
+  }
   .navbar {
     display:flex;
     justify-content:space-around;
@@ -24,7 +32,7 @@
     font-size: 80px;
     font-weight:bold;
     font-family: 'Shrikhand', cursive;
-    color: #4686E7;    
+    color: #4686E7;
     margin:20px;
     background-color:#FFFFFF;
 
@@ -37,7 +45,7 @@
     font-size: 80px;
     font-weight:bold;
     font-family: 'Shrikhand', cursive;
-    background-color: #4686E7;    
+    background-color: #4686E7;
     margin:20px;
 
   }
@@ -46,14 +54,14 @@
   font-size: 30px;
   font-weight:bold;
   font-family:'Quicksand';
-  color: #4686E7;    
+  color: #4686E7;
 
 }
   .footer-onglet {
   font-size: 30px;
   font-weight:bold;
   font-family:'Quicksand';
-  color: #FFFFFF;    
+  color: #FFFFFF;
   margin:30px;
 
 }

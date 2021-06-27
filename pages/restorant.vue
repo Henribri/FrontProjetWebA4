@@ -16,8 +16,8 @@
         </li>
       </ul>
     </div>
-    <div class="grid grid-cols-3 gap-4 m-4">
-      <ArticleCard v-for="article in articles" :key="article.name" ArticleName='Menu maxi BigMag' ArticleDescription="Meilleur Burger du MagDo" ArticlePrice="5" />
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 m-4">
+      <ArticleCard v-for="article in articles" :key="article.name" :ArticleName='article.name' :ArticleDescription="article.description" :ArticlePrice="article.price" />
     </div>
   </div>
 
@@ -34,7 +34,7 @@ import ArticleCard from '~/components/ArticleCard.vue'
     return {
       articles: [
         {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
+          description : 'blablalvlazlaldfz;fùazmer;fgazrgazsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
           name : 'BigMag',
           price : '5'
         },
