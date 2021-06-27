@@ -1,16 +1,17 @@
 <template>
   <swiper class="swiper" :options="swiperOption">
-    <swiper-slide><resto class="resto"><img src="../../assets/resto.svg" width="400" height="341"/>Le resto de sebi
-</resto></swiper-slide>
-    <swiper-slide><resto class="resto"><img src="../../assets/repas.webp" width="400" height="341"/> Le resto de sebi</resto></swiper-slide>
-    <swiper-slide><resto class="resto"><img src="../../assets/resto.svg" width="400" height="341"/> Le resto de riri</resto></swiper-slide>
+
+    <swiper-slide v-for="restorer in restorers" :key="restorer.message" ><resto class="resto"><img src="../../assets/resto.svg" width="400" height="341"/>{{restorer.nom}}</resto></swiper-slide>
 
     <div class="swiper-button-prev" slot="button-prev"></div>
     <div class="swiper-button-next" slot="button-next"></div>
   </swiper>
 </template>
 
+
 <script>
+
+
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import 'swiper/css/swiper.css'
   export default {
@@ -30,10 +31,17 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
           }
-        }
+        },
+        restorers:[
+          {nom:"Le restaurant de sebi", image:"../../assets/resto.svg"},
+          {nom:"Le restaurant de toto", image:"../../assets/resto.svg"}
+        ]
       }
-    }
+    },
+    
   }
+
+
 </script>
 
 
