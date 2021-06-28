@@ -2,7 +2,7 @@
   <div id='resto' >
     <img src="https://www.zuerich.com/sites/default/files/web_zuerich_kindli_restaurant_1600x900_8375.jpg"
       class=" h-52 w-full object-cover ">
-<div>{{this.restorant}}</div>
+<div>{{this.restorer_name}}</div>
     <div class=" w-full object-cover block">
       <ul class="inline-flex">
         <li class="m-3">
@@ -44,49 +44,16 @@
   name : 'resto',
   components: { ArticleCard
   },
-  async asyncData({route }) {
-      const restorant = route.params.restorant // En appelant /abc, le slug sera "abc".
-      return { restorant }
+  async asyncData({route, $axios }) {
+      const restorer_name = route.params.restorer_name  // En appelant /abc, le slug sera "abc".
+      console.log(route.params.restorer_id)
+      const articles=await $axios.$get('http://20.74.18.246/service_articles/get_articles_by_restorer',{params:{
+      restorer_id:route.params.restorer_id
+      }}) 
+      return { restorer_name, articles}
     },
-  data (){
-    return {
-      articles: [
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrgazsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        }
-      ]
-    }
 
-    },
   }
-
 </script>
 
 
