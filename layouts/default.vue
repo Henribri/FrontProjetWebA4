@@ -1,11 +1,13 @@
 <template>
   <div>
-      <div class="navbar">
-      Ceseat
-      <div class="navbar-onglet"> Commander </div>
+      <div class="flex flex-initial flex-col sm:flex-row justify-around items-center text-blue-500 bg-white text-7xl font-bold m-6">
+      <NuxtLink to="/"><div>Ceseat</div></NuxtLink>
+      <NuxtLink to="/restorant"><div class="navbar-onglet"> Commander </div></NuxtLink>
       <div class="navbar-onglet"> Mes commandes </div>
-      <div class="navbar-onglet"> Les restaurants </div>
+       <div class="navbar-onglet"> Mon panier </div>
       </div>
+
+
     <Nuxt />
       <div class="footer">
       <div class="footer-onglet"> A propos </div>
@@ -25,6 +27,7 @@
     padding: 0;
     overflow-x: hidden; ;
   }
+
   .navbar {
     display:flex;
     justify-content:space-around;
@@ -40,13 +43,13 @@
 
     .footer {
     display:flex;
-    justify-content:flex-end;
+    justify-content:center;
     align-items:center;
-    font-size: 80px;
     font-weight:bold;
     font-family: 'Shrikhand', cursive;
     background-color: #4686E7;
     margin:20px;
+
 
   }
 
@@ -58,7 +61,7 @@
 
 }
   .footer-onglet {
-  font-size: 30px;
+  font-size: 15px;
   font-weight:bold;
   font-family:'Quicksand';
   color: #FFFFFF;
