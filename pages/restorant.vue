@@ -2,7 +2,8 @@
   <div id='resto' >
     <img src="https://www.zuerich.com/sites/default/files/web_zuerich_kindli_restaurant_1600x900_8375.jpg"
       class=" h-52 w-full object-cover ">
-    <div ref="cat_bar" class=" w-full object-cover block bg-white" >
+<div>{{this.restorant}}</div>
+    <div class=" w-full object-cover block">
       <ul class="inline-flex">
         <li class="m-3">
           <a class="nav-link active" href="#menus">Menus</a>
@@ -40,76 +41,48 @@
 
 
   export default {
-    name: 'resto',
-    components: {
-      ArticleCard
+  name : 'resto',
+  components: { ArticleCard
+  },
+  async asyncData({route }) {
+      const restorant = route.params.restorant // En appelant /abc, le slug sera "abc".
+      return { restorant }
     },
-    data() {
-      return {
-        articles: [{
-            description: 'blablalvlazlaldfz;fùazmer;',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          },
-          {
-            description: 'blablalvlazlaldfz;fùazmer;fgazrga',
-            name: 'BigMag',
-            price: '5'
-          }
-        ]
-      }
-    },
-    methods: {
+  data (){
+    return {
+      articles: [
+        {
+          description : 'blablalvlazlaldfz;fùazmer;fgazrgazsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          name : 'BigMag',
+          price : '5'
+        },
+        {
+          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
+          name : 'BigMag',
+          price : '5'
+        },
+        {
+          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
+          name : 'BigMag',
+          price : '5'
+        },
+        {
+          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
+          name : 'BigMag',
+          price : '5'
+        },
+        {
+          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
+          name : 'BigMag',
+          price : '5'
+        },
+        {
+          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
+          name : 'BigMag',
+          price : '5'
+        }
+      ]
+    }
 
     },
   }
