@@ -34,7 +34,7 @@ import ArticleCard from '~/components/ArticleCard.vue'
     return {
       articles: [
         {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrgazsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          description : 'blablalvlazlaldfz;fùazmer;',
           name : 'BigMag',
           price : '5'
         },
