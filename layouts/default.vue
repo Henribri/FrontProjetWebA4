@@ -1,8 +1,7 @@
 <template>
   <div>
-      <div class="flex flex-initial flex-col sm:flex-row justify-around items-center text-blue-500 bg-white text-7xl font-bold m-6">
+      <div class="flex flex-initial flex-col md:flex-row justify-around items-center text-blue-500 bg-white text-7xl font-bold m-6">
       <NuxtLink to="/"><div>Ceseat</div></NuxtLink>
-      <NuxtLink to="/restorant"><div class="navbar-onglet"> Commander </div></NuxtLink>
       <div class="navbar-onglet"> Mes commandes </div>
        <div class="navbar-onglet"> Mon panier </div>
       </div>
