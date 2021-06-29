@@ -35,6 +35,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/vuetify',
     '@nuxtjs/fontawesome'
   ],
 
@@ -51,11 +52,24 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/auth'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-
+    baseURL: 'http://20.74.18.246'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/service_auth/login_auth', method: 'post', propertyName:'token' },
+          logout: false ,
+          user: { url: '/service_user/user', method: 'get' , propertyName:'data.attributes'}
+        },
+        tokenType: ''
+      }
+    }
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

@@ -3,27 +3,27 @@
         <nav class="nav">
             <h2 class="nav__header">Products</h2>
             <div class="nav__cart">
-                <button @click="showCart = !showCart">
+                <button >
                     <i class="fas fa-shopping-cart"></i>
                 </button>
-                <span class="total-quantity">{{ totalQuantity}}</span>
-                <div v-if="showCart" class="cart-dropdown">
+                <span class="total-quantity">0</span>
+                <div class="cart-dropdown">
                     <ul class="cart-dropdown__list">
-                        <li v-for="product in cart" :key="product.id"> {{product.name}} ({{product.quantity}})</li>
+                        <li> produit 1 (0)</li>
                     </ul>
                 </div>
             </div> 
         </nav>
 
         <section class="products">
-            <div v-for="product in products" :key="product.id" class="product" >
-                <h3 class="product__header">{{product.name}}</h3>
-                <img src="https://via.placehorder.com/150" :alt="product.name" class="product__image">
-                <p class="product__description">{{product.description}}</p>
+            <div class="product" >
+                <h3 class="product__header">Tacos</h3>
+                <img src="https://via.placehorder.com/150" alt="" class="product__image">
+                <p class="product__description">il est bon</p>
                 <div class="cart">
-                    <button @click="updateCart(product, 'subtract')" class="cart__button">-</button>
-                    <span class="cart__quantity">{{product.quantity}}</span>
-                    <button @click="updateCart(product, 'add')" class="cart__button">+</button>
+                    <button class="cart__button">-</button>
+                    <span class="cart__quantity">0</span>
+                    <button class="cart__button">+</button>
                 </div>
             </div>
         </section>
@@ -142,65 +142,3 @@ html {
   margin: 0 1rem;
 }
 </style>
-
-
-<script>
-
-const app = new Vue({
-  el: "#app",
-  data() {
-    return {
-      products: [
-        {
-          id: 1,
-          name: "Product 1",
-          description: "This is an incredibly awesome product",
-          quantity: 0
-        },
-        {
-          id: 2,
-          name: "Product 2",
-          description: "This is an incredibly awesome product",
-          quantity: 0
-        },
-        {
-          id: 3,
-          name: "Product 3",
-          description: "This is an incredibly awesome product",
-          quantity: 0
-        }
-      ],
-      showCart: false
-    };
-  },
-  computed: {
-    cart() {
-      return this.products.filter((product) => product.quantity > 0);
-    },
-    totalQuantity() {
-      return this.products.reduce(
-        (total, product) => total + product.quantity,
-        0
-      );
-    }
-  },
-  methods: {
-    updateCart(product, updateType) {
-      for (let i = 0; i < this.products.length; i++) {
-        if (this.products[i].id === product.id) {
-          if (updateType === "subtract") {
-            if (this.products[i].quantity !== 0) {
-              this.products[i].quantity--;
-            }
-          } else {
-            this.products[i].quantity++;
-          }
-
-          break;
-        }
-      }
-    }
-  }
-});
-
-</script>
