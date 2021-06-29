@@ -44,9 +44,13 @@
   name : 'resto',
   components: { ArticleCard
   },
-  async asyncData({route }) {
-      const restorant = route.params.restorant // En appelant /abc, le slug sera "abc".
-      return { restorant }
+  async asyncData({route, $axios }) {
+      const restorer_name = route.params.restorer_name  // En appelant /abc, le slug sera "abc".
+      console.log(route.params.restorer_id)
+      const articles=await $axios.$get('http://20.74.18.246/service_articles/get_articles_by_restorer',{params:{
+      restorer_id:route.params.restorer_id
+      }})
+      return { restorer_name, articles}
     },
   data (){
     return {
@@ -59,8 +63,8 @@
       this.articles=await this.$axios.$get('http://localhost:3333/get_all_articles')
 
     }
-  }
 
+  }
 </script>
 
 
