@@ -161,7 +161,7 @@
       </div>
     </div>
     <p class="flex justify-end">
-      <button type="submit" value="submit" class="rounded bg-green-200 p-2 " @click="checkForm">Sign In</button>
+      <button type="submit" value="submit" class="rounded bg-green-200 p-2 " @click="checkForm">Sign Up</button>
     </p>
   </form>
 
@@ -169,6 +169,7 @@
 </template>
 
 <script>
+
 
   export default {
     name: 'CreateClientForm',

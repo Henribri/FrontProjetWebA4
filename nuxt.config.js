@@ -23,7 +23,9 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/sanitize.js'
+  plugins: ['~/plugins/sanitize.js',
+  '~/plugins/project_button.js'
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -35,7 +37,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
   ],
 
   fontawesome: {
