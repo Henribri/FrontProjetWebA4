@@ -1,7 +1,7 @@
 export const state = () => ({
     commandes:[{
         commande: {
-            restorant_name,
+            restorant_name:'',
             validated : false,
             articles:[]
         },

@@ -47,7 +47,11 @@
     font-weight:bold;
     font-family: 'Shrikhand', cursive;
     background-color: #4686E7;
-    margin:20px;
+    margin-top:20px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:5rem;
 
 
   }

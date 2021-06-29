@@ -39,7 +39,7 @@
     props: {
       ArticleName: String,
       ArticleDescription: String,
-      ArticlePrice: String,
+      ArticlePrice: Number,
 
     },
     data() {

@@ -2,7 +2,7 @@
   <div id='resto' >
     <img src="https://www.zuerich.com/sites/default/files/web_zuerich_kindli_restaurant_1600x900_8375.jpg"
       class=" h-52 w-full object-cover ">
-<div>{{this.restorant}}</div>
+    <div class="text-xl font-medium m-3 text-center">{{this.restorant}}</div>
     <div class=" w-full object-cover block">
       <ul class="inline-flex">
         <li class="m-3">
@@ -50,41 +50,15 @@
     },
   data (){
     return {
-      articles: [
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrgazsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        },
-        {
-          description : 'blablalvlazlaldfz;fùazmer;fgazrga',
-          name : 'BigMag',
-          price : '5'
-        }
-      ]
+      articles: []
     }
 
     },
+    async fetch(){
+      console.info("hreyeryyeryeryeryeryer")
+      this.articles=await this.$axios.$get('http://localhost:3333/get_all_articles')
+
+    }
   }
 
 </script>

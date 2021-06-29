@@ -25,7 +25,7 @@
       return {
         swiperOption: {
           slidesPerView: 3,
-          spaceBetween: 30,          
+          spaceBetween: 30,
 
           navigation: {
             nextEl: '.swiper-button-next',
@@ -38,13 +38,13 @@
         ]
       }
     },
-    
+
     async fetch(){
       console.info("hreyeryyeryeryeryeryer")
-      this.restorers=await this.$axios.$get('http://localhost:3333/restorers') 
-      
+      this.restorers=await this.$axios.$get('http://20.74.18.246/service_users/restorers')
+
     }
-    
+
   }
 
 
@@ -73,7 +73,7 @@ justify-content: center;
     font-family: 'Shrikhand', cursive;
     flex-wrap:wrap;
 }
-@media (min-width: 640px) { 
+@media (min-width: 640px) {
   .resto{
     display:flex;
     flex-direction:column;

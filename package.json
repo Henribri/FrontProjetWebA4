@@ -18,6 +18,7 @@
     "nuxt": "^2.15.3",
     "swiper": "^5.4.5",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-sanitize": "^0.2.1",
     "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
