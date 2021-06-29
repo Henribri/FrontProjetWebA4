@@ -18,6 +18,8 @@
         </button>
         <button @click="SelectRole('restorer')"
           class='border-2 rounded-md p-4 max-w-xs	shadow-lg m-4'>Restorateur</button>
+        <button @click="SelectRole('dev')"
+          class='border-2 rounded-md p-4 max-w-xs	shadow-lg m-4'>Développeur</button>
       </div>
       <div v-if="user_type=='client'" class="flex item-center  mt-20 mb-24 justify-center">
         <CreateClientForm />
@@ -27,6 +29,9 @@
       </div>
       <div v-if="user_type=='restorer'" class="flex item-center  mt-20 mb-24 justify-center">
         <CreateRestorerForm />
+      </div>
+      <div v-if="user_type=='dev'" class="flex item-center  mt-20 mb-24 justify-center">
+        <CreateDevForm />
       </div>
     </div>
   </div>
@@ -39,6 +44,7 @@
   import CreateClientForm from '~/components/forms/CreateClientForm.vue'
   import CreateDeliveryForm from '~/components/forms/CreateDeliveryForm.vue'
   import CreateRestorerForm from '~/components/forms/CreateRestorerForm.vue'
+  import CreateDevForm from '~/components/forms/CreateDevForm.vue'
 
   export default {
     name: 'ClientRegister',
@@ -46,7 +52,9 @@
 
       CreateClientForm,
       CreateDeliveryForm,
-      CreateRestorerForm
+      CreateRestorerForm,
+      CreateDevForm
+
 
     },
     data() {
