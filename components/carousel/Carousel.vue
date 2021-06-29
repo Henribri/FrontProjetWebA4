@@ -69,7 +69,7 @@ justify-content: center;
     display:flex;
     flex-direction:column;
     align-items: center;
-    font-size: 20px;
+    font-size: 10px;
     font-family: 'Shrikhand', cursive;
     flex-wrap:wrap;
 }

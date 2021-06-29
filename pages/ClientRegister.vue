@@ -1,15 +1,15 @@
 <template>
   <div>
-    <button v-if="!role_selected" @click="GoBack()" class="flex flex-inline items-center ml-48 mt-20">
+    <button v-if="!role_selected" @click="GoBack()" class="flex flex-inline items-center lg:ml-48 lg:mt-20 ml-4 mt-4 mb-4">
       <font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x mr-4" />
       <div class='font-medium'>Retour</div>
     </button>
-    <button v-if="role_selected" @click="ToChoice()" class="flex flex-inline items-center ml-48 mt-20">
+    <button v-if="role_selected" @click="ToChoice()" class="flex flex-inline items-center lg:ml-48 lg:mt-20 ml-4 mt-4 mb-4">
       <font-awesome-icon :icon="['fas', 'arrow-left']" class="fa-2x mr-4" />
       <div class='font-medium'>Retour</div>
     </button>
-    <div v-if="!role_selected" class="text-xl ml-96 font-medium m-10 mt-10">Vous êtes un :</div>
-    <div class="flex justify-center mt-10">
+    <div v-if="!role_selected" class="text-xl lg:ml-96 ml-4 lg:m-96 lg:mb-0 lg:mt-4 font-medium ">Vous êtes un :</div>
+    <div class="flex justify-center mb-20">
       <div v-if="!role_selected" class="flex flex-col">
         <div class="pl-48 pr-48"></div>
         <button @click="SelectRole('client')" class='border-2 rounded-md p-4  m-4 max-w-xs shadow-lg '>Client fidèle
@@ -21,16 +21,16 @@
         <button @click="SelectRole('dev')"
           class='border-2 rounded-md p-4 max-w-xs	shadow-lg m-4'>Développeur</button>
       </div>
-      <div v-if="user_type=='client'" class="flex item-center  mt-20 mb-24 justify-center">
+      <div v-if="user_type=='client'" class="flex item-center  mt-20 mb-24 p-2 justify-center">
         <CreateClientForm />
       </div>
-      <div v-if="user_type=='delivery'" class="flex item-center  mt-20 mb-24 justify-center">
+      <div v-if="user_type=='delivery'" class="flex item-center  mt-20 mb-24 p-2 justify-center">
         <CreateDeliveryForm />
       </div>
-      <div v-if="user_type=='restorer'" class="flex item-center  mt-20 mb-24 justify-center">
+      <div v-if="user_type=='restorer'" class="flex item-center  mt-20 mb-24  p-2 justify-center">
         <CreateRestorerForm />
       </div>
-      <div v-if="user_type=='dev'" class="flex item-center  mt-20 mb-24 justify-center">
+      <div v-if="user_type=='dev'" class="flex item-center  mt-20 mb-24  p-2 justify-center">
         <CreateDevForm />
       </div>
     </div>
