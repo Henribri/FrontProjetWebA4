@@ -65,8 +65,8 @@ export default {
       local: {
         endpoints: {
           login: { url: '/service_auth/login_auth', method: 'post', propertyName:'token' },
-          logout: { url : '/logout', method :'post'} ,
-          user: { url: '/service_users/user', method: 'get' }
+          logout: false ,
+          user: { url: '/service_users/user', method: 'get'}
         },
         tokenType: 'bearer'
       }
