@@ -16,8 +16,8 @@ export const state = () => ({
         //state.paniers[state.paniers.indexOf(param.panier)].articles.push(param.article)
         state.panier.articles.push(param.article)
     },
-    removeArticle(state, panier, article){
-        state.paniers.indexOf(panier).splice(state.paniers.indexOf(panier).indexOf(article),1)
+    removeArticle(state, article){
+        state.panier.articles.splice(state.panier.articles.indexOf(article),1)
     }
   }
 
