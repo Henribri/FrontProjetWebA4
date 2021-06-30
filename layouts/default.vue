@@ -8,14 +8,14 @@
       <div class="navbar-onglet"> Mes commandes </div>
         <NuxtLink to="/panier"><div class="navbar-onglet"> Mon panier </div></NuxtLink>
 
-      <div v-if="$auth.loggedIn" class="flex flex-inline items-center">
+      <div v-if="$auth.loggedIn">
 
         <h1>{{$auth.user.email}}</h1>
-        <v-btn text @click="$auth.logout()">Logout</v-btn>
+        <btn  @click="$auth.logout()">Logout</btn>
         <!-- user name -->
         <!-- button logout -->
       </div>
-      <div v-else class="flex flex-inline items-center">
+      <div v-else >
         <NuxtLink class="font-medium text-xl" to="/ClientRegister">
           <div>Sign Up</div>
         </NuxtLink>
