@@ -1,7 +1,7 @@
 <template>
   <swiper class="swiper" :options="swiperOption">
 
-    <swiper-slide v-for="restorer in restorers.restorers" :key="restorer.restorer_id" ><NuxtLink :to="{name:'restorant', params:{restorer_name: `${restorer.restorer_name}`, restorer_id:`${restorer.restorer_id}`}}" ><resto class="resto" name=restorer.restorer_id><img src="../../assets/resto.svg" width="400" height="341"/>{{restorer.restorer_name}}</resto></NuxtLink></swiper-slide>
+    <swiper-slide v-for="restorer in restorers.restorers" :key="restorer.restorer_id" ><NuxtLink :to="`restorant/${restorer.restorer_id}`" ><resto class="resto" name=restorer.restorer_id><img src="../../assets/resto.svg" width="400" height="341"/>{{restorer.restorer_name}}</resto></NuxtLink></swiper-slide>
 
     <div class="swiper-button-prev" slot="button-prev"></div>
     <div class="swiper-button-next" slot="button-next"></div>
@@ -25,8 +25,8 @@
       return {
         swiperOption: {
           slidesPerView: 3,
-          spaceBetween: 30,     
-               
+          spaceBetween: 30,
+
 
           navigation: {
             nextEl: '.swiper-button-next',
@@ -39,12 +39,12 @@
         ]
       }
     },
-    
+
     async fetch(){
-      this.restorers=await this.$axios.$get('http://20.74.18.246/service_users/restorers') 
-      
+      this.restorers=await this.$axios.$get('http://20.74.18.246/service_users/restorers')
+
     }
-    
+
   }
 
 
@@ -69,11 +69,11 @@ justify-content: center;
     display:flex;
     flex-direction:column;
     align-items: center;
-    font-size: 20px;
+    font-size: 10px;
     font-family: 'Shrikhand', cursive;
     flex-wrap:wrap;
 }
-@media (min-width: 640px) { 
+@media (min-width: 640px) {
   .resto{
     display:flex;
     flex-direction:column;
