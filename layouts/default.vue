@@ -20,6 +20,7 @@
 
 
     <Nuxt />
+    <div class="m-24"></div>
     <div class="footer">
       <div class="footer-onglet"> A propos </div>
       <div class="footer-onglet"> Nous contacter </div>
@@ -61,7 +62,7 @@
     font-family: 'Shrikhand', cursive;
     background-color: #4686E7;
     margin-top: 20px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     height: 5rem;

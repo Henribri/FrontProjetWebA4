@@ -1,7 +1,7 @@
 <template>
 
 <div class="flex flex-col items-center ">
-
+  <b class="text-6xl mb-5">Your panier</b>
     <div class="flex justify-center content-center flex-col w-5/12 " v-for="menu in panier" :key="menu.id">
       <div class="flex flex-wrap flex-col py-4 px-8 bg-white shadow-lg rounded-lg my-20"> 
                   <div class="flex justify-end">
@@ -39,15 +39,20 @@
       </div>
       
   </div>     
-  <button v-on:click="load_command(panier)" class="fixed bottom-20 md:bottom-1/2 left-3/4 px-5  text-2xl py-4 rounded-xl text-sm font-medium text-blue-600 bg-white outline-none focus:outline-none m-2 hover:m-0 focus:m-0 border-4 border-blue-600 hover:border-8 focus:border-8 hover:border-blue-800 hover:text-blue-800 focus:border-purple-200 active:border-grey-900 active:text-grey-900 transition-all md:text-4xl">Pay  {{prix_total}} €</button>
-
-  
+  <b class="text-6xl mb-5">Adress and payment</b>
+  <address-form-vue :DisplayModifier=false :State=true> </address-form-vue>
+  <button v-on:click="load_command(panier)" class=" mt-16 px-5  text-2xl py-4 rounded-xl text-sm font-medium text-blue-600 bg-white outline-none focus:outline-none m-2 hover:m-0 focus:m-0 border-4 border-blue-600 hover:border-8 focus:border-8 hover:border-blue-800 hover:text-blue-800 focus:border-purple-200 active:border-grey-900 active:text-grey-900 transition-all md:text-4xl">Pay  {{prix_total}} €</button>
 </div>
 
 </template>
 
 <script>
+import AddressFormVue from '~/components/forms/AddressForm.vue'
+
 export default {
+  components:{
+    AddressFormVue
+  },
   methods:{
     remove(Article){
       this.$store.commit('removeArticle', {article:Article})
@@ -62,7 +67,7 @@ export default {
                       }
                       commands[menu.restorer].articles.push(menu)
           })
-          console.log(commands)
+          console.log(this.$store.state.address)
 
     },
   },
