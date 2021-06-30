@@ -61,18 +61,12 @@ export default {
     baseURL: 'http://20.74.18.246'
   },
   auth: {
-    redirect: {
-      login: '/login',
-      home: '/',
-      logout: false
-    },
-    watchLoggedIn : true,
     strategies: {
       local: {
         endpoints: {
           login: { url: '/service_auth/login_auth', method: 'post', propertyName:'token' },
           logout: { url : '/logout', method :'post'} ,
-          user: { url: '/service_users/user', method: 'get' , propertyName:false}
+          user: { url: '/service_users/user', method: 'get' }
         },
         tokenType: 'bearer'
       }
