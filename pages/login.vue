@@ -1,7 +1,5 @@
 <template>
   <v-container>
-      <h1>Login</h1>
-
       <UserAuthForm buttonText="Login" :submitForm="loginUser"/>
   </v-container>
 </template>
@@ -14,7 +12,12 @@ export default {
       loginUser(loginInfo){
           this.$auth.loginWith('local', {
               data: loginInfo
-          })
+          }).then((resp) => {
+          this.SET_IS_AUTH(true)
+          this.$auth.fetchUser()
+        }).catch(() => {
+          console.log('error')
+        })
       }
   }
 }

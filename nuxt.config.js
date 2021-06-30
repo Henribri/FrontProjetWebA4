@@ -65,11 +65,21 @@ export default {
         endpoints: {
           login: { url: '/service_auth/login_auth', method: 'post', propertyName:'token' },
           logout: false ,
-          user: { url: '/service_user/user', method: 'get' , propertyName:'data.attributes'}
+          user: { url: '/service_users/user', method: 'get' , propertyName:'data.attibutes'}
         },
         tokenType: ''
       }
-    }
+    },
+    token: {
+      name: 'token'
+    },
+    cookie: {
+      name: 'token'
+    },
+    redirect: {
+      login: '/index',
+      logout: '/'
+    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
