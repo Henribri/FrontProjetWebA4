@@ -13,7 +13,7 @@
         </div>
       </figcaption>
       <div class="flex items-center mt-5 ">
-        <button class="ml-1 mb-1" v-on:click="CounterPlus(Panier, Article)">
+        <button class="ml-1 mb-1" v-on:click="CounterPlus( Article)">
         <font-awesome-icon :icon="['fas', 'plus']" />
       </button>
       <p class="m-1">
@@ -41,7 +41,6 @@
       ArticleDescription: String,
       ArticlePrice: String,
       Article:Object,
-      Panier:Object,
 
 
 
@@ -52,10 +51,10 @@
       }
     },
     methods: {
-      CounterPlus(Panier,Article){
+      CounterPlus(Article){
         this.counter+=1
         console.log(Article)
-        this.$store.commit('addArticle', {panier:Panier, article:Article})
+        this.$store.commit('addArticle', {article:Article})
 
       },
       CounterMinus(){
