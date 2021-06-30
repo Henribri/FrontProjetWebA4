@@ -68,19 +68,9 @@ export default {
           logout: false ,
           user: { url: '/service_users/user', method: 'get' , propertyName:'data.attibutes'}
         },
-        tokenType: ''
+        tokenType: 'bearer'
       }
-    },
-    token: {
-      name: 'token'
-    },
-    cookie: {
-      name: 'token'
-    },
-    redirect: {
-      login: '/index',
-      logout: '/'
-    },
+    }
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
