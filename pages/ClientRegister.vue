@@ -37,7 +37,7 @@
         <CreateDevForm />
       </div>
     </div>
-
+    <button @click="test()">test</button>
   </div>
 
 
@@ -81,6 +81,9 @@
         this.user_type = role
         console.log(this.role_selected)
         console.log(this.user_type)
+      },
+      test(){
+        console.log(this.$auth)
       }
     },
   }

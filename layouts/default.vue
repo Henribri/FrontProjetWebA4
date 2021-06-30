@@ -10,12 +10,14 @@
         <div class="navbar-onglet"> Mon panier </div>
       </NuxtLink>
 
-      <div v-if="$auth.loggedIn" class="flex flex-inline items-center">
+      <div v-if="$auth.loggedIn" class="">
+        <div class="flex flex-inline items-center">
+          <h1>{{$auth.user.email}}</h1>
+          <v-btn text @click="$auth.logout()">Logout</v-btn>
+          <!-- user name -->
+          <!-- button logout -->
+        </div>
 
-        <h1>{{$auth.user.email}}</h1>
-        <v-btn text @click="$auth.logout()">Logout</v-btn>
-        <!-- user name -->
-        <!-- button logout -->
       </div>
       <div v-else>
         <div class="flex flex-inline items-center">
@@ -44,6 +46,8 @@
 
   </div>
 </template>
+
+
 
 <style>
   html,
