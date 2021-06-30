@@ -57,17 +57,43 @@ export default {
     remove(Article){
       this.$store.commit('removeArticle', {article:Article})
     },
-        load_command(panier){
+        async load_command(panier){
 
+          let req_error=true
           let commands=[]
           panier.forEach(menu=>{
                       console.log(menu.restorer)
                       if (!commands[menu.restorer]){
-                          commands[menu.restorer]={ids:{user_id:1, restorer_id:menu.restorer},articles:[]}
+                          commands[menu.restorer]={
+                          info:{
+                            validated:true,
+                            restorer_id:menu.restorer,
+                            client:
+                              {
+                                user_id:1,
+                                firstname:"henri",
+                                lastname:"briaux",
+                                email:"henri.seb@thomas.com"
+                              },
+                            address:this.$store.state.address
+                          },
+                          articles:[],
+                          total_price:this.prix_total
+                          }
                       }
                       commands[menu.restorer].articles.push(menu)
           })
-          console.log(this.$store.state.address)
+          commands.forEach(command=>{
+          this.$axios.$post('http://localhost:3333/create_command',     
+          command,
+          {
+            params:{
+            jwt:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MDc3MjM5LCJleHAiOjE2MjUwNzkwMzl9.B68Jl7qQQ43TK8ofQ8EPv_B3SHSDJkui_F2c_IqMZcE"
+          }
+  
+          }
+          )});
+       this.$router.push('/')
 
     },
   },
