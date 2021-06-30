@@ -9,7 +9,7 @@
        <NuxtLink to="/panier"><div class="navbar-onglet"> Mon panier </div></NuxtLink>
       <div class="flex flex-inline items-center">
         <NuxtLink class="font-medium text-xl" to="/ClientRegister">
-          <div>Sign In</div>
+          <div>Sign Up</div>
         </NuxtLink>
         <div class="font-medium text-xl m-2">|</div>
         <NuxtLink class="font-medium text-xl" to="/">

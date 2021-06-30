@@ -154,7 +154,7 @@
         this.phone_number = this.$sanitize(this.phone_number)
     },
     async SignIn(){
-      await this.$axios.$post('http://localhost:3333/user/delivery',{
+      await this.$axios.$post('http://20.74.18.246/service_users/user/delivery',{
           user_firstname: this.first_name,
           user_lastname: this.last_name,
           user_email: this.email,

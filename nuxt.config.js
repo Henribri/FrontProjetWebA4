@@ -23,8 +23,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/sanitize.js',
-  '~/plugins/project_button.js'
+  plugins: ['~/plugins/sanitize.js'
 
   ],
 
