@@ -25,8 +25,8 @@
       return {
         swiperOption: {
           slidesPerView: 3,
-          spaceBetween: 30,     
-               
+          spaceBetween: 30,
+
 
           navigation: {
             nextEl: '.swiper-button-next',
@@ -39,12 +39,12 @@
         ]
       }
     },
-    
+
     async fetch(){
-      this.restorers=await this.$axios.$get('http://20.74.18.246/service_users/restorers') 
-      
+      this.restorers=await this.$axios.$get('http://20.74.18.246/service_users/restorers')
+
     }
-    
+
   }
 
 
@@ -69,11 +69,11 @@ justify-content: center;
     display:flex;
     flex-direction:column;
     align-items: center;
-    font-size: 20px;
+    font-size: 10px;
     font-family: 'Shrikhand', cursive;
     flex-wrap:wrap;
 }
-@media (min-width: 640px) { 
+@media (min-width: 640px) {
   .resto{
     display:flex;
     flex-direction:column;
