@@ -6,16 +6,27 @@
         <div>Ceseat</div>
       </NuxtLink>
       <div class="navbar-onglet"> Mes commandes </div>
-       <NuxtLink to="/panier"><div class="navbar-onglet"> Mon panier </div></NuxtLink>
-      <div class="flex flex-inline items-center">
+        <NuxtLink to="/panier"><div class="navbar-onglet"> Mon panier </div></NuxtLink>
+
+      <div v-if="$auth.loggedIn" class="flex flex-inline items-center">
+
+        <h1>{{$auth.user.email}}</h1>
+        <v-btn text @click="$auth.logout()">Logout</v-btn>
+        <!-- user name -->
+        <!-- button logout -->
+      </div>
+      <div v-else class="flex flex-inline items-center">
         <NuxtLink class="font-medium text-xl" to="/ClientRegister">
           <div>Sign Up</div>
         </NuxtLink>
         <div class="font-medium text-xl m-2">|</div>
-        <NuxtLink class="font-medium text-xl" to="/">
+        <NuxtLink class="font-medium text-xl" to="/login">
           <div>Log In</div>
         </NuxtLink>
+        <!-- button login -->
+        <!-- button logout -->
       </div>
+
     </div>
 
 
