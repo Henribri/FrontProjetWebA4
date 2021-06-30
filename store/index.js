@@ -1,35 +1,27 @@
 export const state = () => ({
-    commandes:[{
-        commande: {
-            validated : false,
-            articles:[]
-        },
-    }],
-    user:{
-
-    }
-
-  })
+    panier:{
+      articles:[],
+}})
+ 
 
   export const mutations = {
-    addCommand(state,commande) {
-      state.commandes.push({
-            commande
-      })
+    addPanier(state,panier) {
+      state.panier=panier
+      
     },
-    removeCommand(state, commande) {
-      state.commandes.splice(state.commandes.indexOf(commande), 1)
+    removePanier(state, panier) {
+      state.paniers.splice(state.paniers.indexOf(panier), 1)
     },
-    addArticle(state, commande,article){
-        state.commandes.indexOf(commande).articles.push({article})
+    addArticle(state, param){
+        //state.paniers[state.paniers.indexOf(param.panier)].articles.push(param.article)
+        state.panier.articles.push(param.article)
     },
-    removeArticle(state, commande, article){
-        state.commandes.indexOf(commande).splice(state.commandes.indexOf(commande).indexOf(article),1)
+    removeArticle(state, panier, article){
+        state.paniers.indexOf(panier).splice(state.paniers.indexOf(panier).indexOf(article),1)
     }
-
   }
 
 export const getters = {
-    commandes: state => state.commandes
+    paniers: state => state.paniers
 
 }
