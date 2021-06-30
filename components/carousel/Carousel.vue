@@ -1,7 +1,7 @@
 <template>
   <swiper class="swiper" :options="swiperOption">
 
-    <swiper-slide v-for="restorer in restorers.restorers" :key="restorer.restorer_id" ><NuxtLink :to="{name:'restorant', params:{restorer_name: `${restorer.restorer_name}`, restorer_id:`${restorer.restorer_id}`}}" ><resto class="resto" name=restorer.restorer_id><img src="../../assets/resto.svg" width="400" height="341"/>{{restorer.restorer_name}}</resto></NuxtLink></swiper-slide>
+    <swiper-slide v-for="restorer in restorers.restorers" :key="restorer.restorer_id" ><NuxtLink :to="`restorant/${restorer.restorer_id}`" ><resto class="resto" name=restorer.restorer_id><img src="../../assets/resto.svg" width="400" height="341"/>{{restorer.restorer_name}}</resto></NuxtLink></swiper-slide>
 
     <div class="swiper-button-prev" slot="button-prev"></div>
     <div class="swiper-button-next" slot="button-next"></div>

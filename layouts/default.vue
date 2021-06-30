@@ -6,7 +6,7 @@
         <div>Ceseat</div>
       </NuxtLink>
       <div class="navbar-onglet"> Mes commandes </div>
-      <div class="navbar-onglet"> Mon panier </div>
+       <NuxtLink to="/panier"><div class="navbar-onglet"> Mon panier </div></NuxtLink>
       <div class="flex flex-inline items-center">
         <NuxtLink class="font-medium text-xl" to="/ClientRegister">
           <div>Sign Up</div>
