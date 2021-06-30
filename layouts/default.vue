@@ -81,7 +81,7 @@
     font-family: 'Shrikhand', cursive;
     background-color: #4686E7;
     margin-top: 20px;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 5rem;
