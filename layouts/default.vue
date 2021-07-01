@@ -5,11 +5,11 @@
       <NuxtLink to="/">
         <div>Ceseat</div>
       </NuxtLink>
-      <div class="navbar-onglet"> Mes commandes </div>
+      <NuxtLink to="/commands"><div class="navbar-onglet"> Mes commandes </div></NuxtLink>
        <NuxtLink to="/panier"><div class="navbar-onglet"> Mon panier </div></NuxtLink>
       <div class="flex flex-inline items-center">
         <NuxtLink class="font-medium text-xl" to="/ClientRegister">
-          <div>Sign In</div>
+          <div>Sign Up</div>
         </NuxtLink>
         <div class="font-medium text-xl m-2">|</div>
         <NuxtLink class="font-medium text-xl" to="/">
@@ -20,6 +20,7 @@
 
 
     <Nuxt />
+    <div class="m-24"></div>
     <div class="footer">
       <div class="footer-onglet"> A propos </div>
       <div class="footer-onglet"> Nous contacter </div>
@@ -61,7 +62,7 @@
     font-family: 'Shrikhand', cursive;
     background-color: #4686E7;
     margin-top: 20px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     height: 5rem;
