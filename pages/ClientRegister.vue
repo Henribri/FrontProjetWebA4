@@ -37,7 +37,6 @@
         <CreateDevForm />
       </div>
     </div>
-    <button @click="test()">test</button>
   </div>
 
 

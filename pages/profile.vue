@@ -17,6 +17,7 @@
             <font-awesome-icon :icon="['fas', 'pencil-alt']" />
           </button>
         </div>
+        <p v-if="first_name==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
         <div class="w-full  px-3 mb-6 md:mb-0 flex flex-inline items-center">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mr-4" for="first_name">
             Nom
@@ -28,6 +29,7 @@
             <font-awesome-icon :icon="['fas', 'pencil-alt']" />
           </button>
         </div>
+        <p v-if="last_name==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
         <div class="w-full  px-3 mb-6 md:mb-0 flex flex-inline items-center">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mr-4" for="first_name">
             email
@@ -38,17 +40,9 @@
           <button class="ml-4 mb-1 bg-gray-200 p-1 rounded" v-on:click="email_sate=!email_sate">
             <font-awesome-icon :icon="['fas', 'pencil-alt']" />
           </button>
-        </div>
-        <div class="w-full  px-3 mb-6 md:mb-0 flex flex-inline items-center">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold  mr-4" for="first_name">
-            Mot de passe
-          </label>
-          <input
-            class="appearance-none block w-full  border-2 border-solid border-gray-200 rounded bg-gray-100 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="password" type="text" :disabled="password_state==false" v-model="password">
-          <button class="ml-4 mb-1 bg-gray-200 p-1 rounded" v-on:click="password_state=!password_state">
-            <font-awesome-icon :icon="['fas', 'pencil-alt']" />
-          </button>
+          <p v-if="email_taken==true" class="text-red-500 text-xs italic">Cette adresse email est déjà prise</p>
+          <p v-if="email==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
+          <p v-if="email_error!=null" class="text-red-500 text-xs italic">{{ email_error }}</p>
         </div>
         <div class="w-full  px-3 mb-6 md:mb-0 flex flex-inline items-center">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold  mr-4" for="first_name">
@@ -62,6 +56,7 @@
           </button>
         </div>
         <p v-if="phone_number_error!=null" class="text-red-500 text-xs italic">{{ phone_number_error }}</p>
+        <p v-if="phone_number==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
         <div class="flex justify-end items-center">
           <button class="ml-4 mb-1 mr-2 border rounded p-2 bg-green-200" @click="checkForm">
             Enregistrer
@@ -69,9 +64,9 @@
         </div>
       </div>
       <address-form v-if="role=='client'" class="pr-4" :BoxName="payment"
-        :address_id="this.$auth.user.fk_payment_address_id" :address_type="'payment'" />
+        :address_id="this.$auth.user.fk_payment_address_id" :address_type="'payment'"  :DisplayModifier="true" />
       <address-form v-if="role=='client'" class="pr-4" :BoxName="delivery"
-        :address_id="this.$auth.user.fk_delivery_address_id" :address_type="'delivery'" />
+        :address_id="this.$auth.user.fk_delivery_address_id" :address_type="'delivery'" :DisplayModifier="true" />
       <credit-card-form v-if="role=='client'" class="pr-4" />
       <restorer-form v-if="role=='restorer'" :restorer_id="restorer_id" />
     </div>
@@ -141,26 +136,28 @@
     data() {
       return {
         errors:[],
-        first_name: "test",
-        last_name: "bij",
-        password: "****",
-        email: 'baba@babou.fr',
+        first_name: null,
+        last_name: null,
+        password: null,
+        email: null,
         email_taken: null,
-        phone_number: "0123456789",
+        phone_number: null,
         first_name_state: false,
         last_name_state: false,
         password_state: false,
         phone_number_state: false,
         email_sate: false,
-        payment: 'Adresse de paiement',
-        delivery: 'Adresse de livraison',
-        adresse: 'Adresse',
+        payment: null,
+        delivery: null,
+        adresse: null,
         role: undefined,
         restorer_id: null,
         phone_number_error: null,
         DeleteWanted: false,
         sponsor_error:null,
         filleul:null,
+        email_error:null,
+        password_error:null
       }
     },
     methods: {
@@ -169,6 +166,8 @@
         this.email_taken = false
         this.errors = []
         this.phone_number_error = null
+        this.password_error =null
+        this.email_error =null
         this.InputSanitize();
         this.checkInput()
         event.preventDefault();
@@ -201,6 +200,12 @@
           this.errors.push('password required.');
           this.password = null
         }
+        if(this.password!=null){
+          if(this.password.length < 8){
+            this.password_error="votre mot de passe n'est pas assez long"
+            this.errors.push('password not long enough');
+          }
+        }
         if (!this.email || this.email == 'null') {
           this.errors.push('email required.');
           this.email = null
@@ -211,8 +216,7 @@
         }
         if (!this.validPhone(this.phone_number)) {
           this.errors.push('enter a valid phone number.')
-          this.phone_number_error =
-            'Numéro de téléphone invalide il ne doit être composé que de chiffre et en comporter 10'
+          this.phone_number_error = 'Numéro de téléphone invalide il ne doit être composé que de chiffre et en comporter 10'
         }
         if (!this.phone_number || this.phone_number == 'null') {
           this.errors.push('credit card numbers required')
@@ -236,7 +240,7 @@
         }
       },
       async sponsor(){
-        await this.$axios.$put('http://localhost:3333/user/support', {
+        await this.$axios.$put('http://20.74.32.244/ceseat_users/user/support', {
           filleul_email : this.filleul
         })
         .then(function (response) {
@@ -244,14 +248,15 @@
         }).catch(error => {
           if (error.response.data.code == "friend") {
             this.sponsor_error = 'Votre ami est déjà parrainé ou vous avez saisi la mauvaise adresse'
-          } else {
-            consol.log(error.response)
+          }else{
+            consol.log('test')
+            this.sponsor_error = "Vous avez déjà parrainé quelqu'un"
           }
         })
 
       },
       async DeleteProfil(){
-        await this.$axios.$delete('http://localhost:3333/user')
+        await this.$axios.$delete('http://20.74.32.244/ceseat_users/user')
       },
       validEmail: function (email) {
         var re =
@@ -278,7 +283,7 @@
         this.phone_number = this.$sanitize(this.phone_number)
       },
       async SignIn() {
-        await this.$axios.$put('http://localhost:3333/user', {
+        await this.$axios.$put('http://20.74.32.244/ceseat_users/user', {
           user_firstname: this.first_name,
           user_lastname: this.last_name,
           user_email: this.email,
@@ -287,8 +292,9 @@
         }).then(function (response) {
           console.log(response)
         }).catch(error => {
-          if (error.response.data.code == "email") {
+          if (error.response.data.err.number == 2601) {
             this.email_taken = true
+            console.log('err')
           } else {
             consol.log(error.response)
           }

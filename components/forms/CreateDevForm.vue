@@ -28,8 +28,9 @@
         <input
           class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="password" type="password" placeholder="******************"  v-model="password">
-        <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+         <p class="text-gray-600 text-xs italic">Votre mot de passe doit compter au moins 8 caractères</p>
         <p v-if="password==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
+        <p v-if="password_error!=null" class="text-red-500 text-xs italic">{{ password_error }}</p>
       </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-6">
@@ -80,7 +81,8 @@
         email_taken:false,
         phone_number:null,
         phone_number_error:null,
-        email_error : null
+        email_error : null,
+        password_error:null
       }
     },
     methods: {
@@ -90,6 +92,7 @@
         this.errors = []
         this.phone_number_error = null
         this.email_error = null
+        this.password_error =null
         this.InputSanitize()
         this.checkInput()
         event.preventDefault();
@@ -114,6 +117,12 @@
           this.errors.push('password required.');
           this.password=null
             }
+        if(this.password!=null){
+          if(this.password.length < 8){
+            this.password_error="votre mot de passe n'est pas assez long"
+            this.errors.push('password not long enough');
+          }
+        }
         if (!this.email || this.email=='null') {
           this.errors.push('email required.');
           this.email=null

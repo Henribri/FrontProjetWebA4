@@ -53,7 +53,7 @@
         </label>
         <input
           class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="restorant_name" type="text" placeholder="jaifaim@manger.com" v-model="restorant_name">
+          id="restorant_name" type="text" placeholder="McDonald" v-model="restorant_name">
           <p v-if="restorant_name==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
       </div>
       <div class="w-full mt-2 md:w-1/2 px-3">
@@ -134,8 +134,7 @@
         email_taken:false,
         phone_number:null,
         phone_number_error:null,
-        email_error : null,
-        password_error:null
+        email_error : null
       }
     },
     methods: {
@@ -169,10 +168,12 @@
           this.errors.push('password required.');
           this.password=null
             }
-          if(this.password.length <= 8){
+        if(this.password!=null){
+          if(this.password.length < 8){
             this.password_error="votre mot de passe n'est pas assez long"
             this.errors.push('password not long enough');
           }
+        }
         if (!this.email || this.email=='null') {
           this.errors.push('email required.');
           this.email=null
