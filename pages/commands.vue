@@ -16,9 +16,9 @@
 <script>
 export default{
     async asyncData({$axios}) {
-    let commands= await $axios.$get('http://localhost:3333/get_historic_command',{ 
+    let commands= await $axios.$get('http://localhost:3333/commands',{ 
           headers:{
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTYyMDYxLCJleHAiOjE2MjUxNjM4NjF9.bXsu2ZZ5KzMEVvMIDosE94ta_wzfG6G-B0twRQLVfNs"
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTY1NTE2LCJleHAiOjE2MjUxNjczMTZ9.cPGStjnylMGhHthpD6SgApi_FbOGnbpNGzWgo5OPQFE"
           }}) 
     return {commands}
 

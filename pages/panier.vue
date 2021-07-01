@@ -87,11 +87,11 @@ export default {
 
           })
           commands.forEach(command=>{
-          this.$axios.$post('http://localhost:3333/create_command',     
+          this.$axios.$post('http://localhost:3333/command',     
           command,
           {
             headers:{
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTYyMDYxLCJleHAiOjE2MjUxNjM4NjF9.bXsu2ZZ5KzMEVvMIDosE94ta_wzfG6G-B0twRQLVfNs"
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTY1NTE2LCJleHAiOjE2MjUxNjczMTZ9.cPGStjnylMGhHthpD6SgApi_FbOGnbpNGzWgo5OPQFE"
           }
   
           }
@@ -112,7 +112,6 @@ export default {
       const panier=this.$store.state.panier.articles
       panier.forEach(element => {
         prix_total+=element.price
-        
       });
       return prix_total
     },
