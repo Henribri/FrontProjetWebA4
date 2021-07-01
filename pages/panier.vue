@@ -66,6 +66,8 @@ export default {
                       if (!commands[menu.restorer]){
                           commands[menu.restorer]={
                           info:{
+                            total_price:this.prix_total,
+                            date:new Date().toJSON().slice(0,10).replace(/-/g,'/'),
                             validated:true,
                             restorer_id:menu.restorer,
                             client:
@@ -78,7 +80,7 @@ export default {
                             address:this.$store.state.address.address
                           },
                           articles:[],
-                          total_price:this.prix_total
+
                           }
                       }
                       commands[menu.restorer].articles.push(menu)
@@ -89,7 +91,7 @@ export default {
           command,
           {
             headers:{
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MDkxNjcwLCJleHAiOjE2MjUwOTM0NzB9.OqzM4jUupv4DARmbN58SGYH0nL8jRg5L40U1TbHqK3o"
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTQzNDM4LCJleHAiOjE2MjUxNDUyMzh9.bhH1YWhm55v_BmxSp2FF29C6r2tQAGR43VWr7x6Ef9s"
           }
   
           }
