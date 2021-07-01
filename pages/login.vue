@@ -12,12 +12,7 @@ export default {
       loginUser(loginInfo){
           this.$auth.loginWith('local', {
               data: loginInfo
-          })/*.then((resp) => {
-          this.SET_IS_AUTH(true)
-          this.$router.push('/index')
-        }).catch(() => {
-          console.log('error')
-        })*/
+          })
       }
   }
 }
