@@ -13,7 +13,7 @@
 
       <div v-if="$auth.loggedIn" class="">
         <div class="flex flex-inline items-center">
-          <h1>{{$auth.user.email}}</h1>
+          <h1></h1>
           <v-btn text @click="$auth.logout()">Logout</v-btn>
           <v-btn text to="/profile">Profil</v-btn>
           <!-- user name -->
@@ -40,10 +40,11 @@
 
     <Nuxt />
     <div class="m-24"></div>
-    <div class="footer">
+    <div class="footer flex">
       <div class="footer-onglet"> A propos </div>
       <div class="footer-onglet"> Nous contacter </div>
       <div class="footer-onglet"> Support </div>
+      <div v-if="$auth.loggedIn" @click="$router.push('/dev')" class="footer-onglet"> Développeur </div>
     </div>
 
   </div>
