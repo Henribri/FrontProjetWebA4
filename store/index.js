@@ -9,8 +9,10 @@ export const state = () => ({
       state.panier=panier
       
     },
-    removePanier(state, panier) {
-      state.paniers.splice(state.paniers.indexOf(panier), 1)
+    removePanier(state) {
+      state.panier={
+          articles:[],
+    }
     },
     addArticle(state, param){
         //state.paniers[state.paniers.indexOf(param.panier)].articles.push(param.article)
