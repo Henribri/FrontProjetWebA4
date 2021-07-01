@@ -8,7 +8,7 @@
         </label>
         <div class="relative">
           <select
-            class="block appearance-none w-full  border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            class="block appearance-none w-full border-2 border-solid border-gray-200 bg-gray-100 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="credit_card_type"  :disabled="state==false" v-model="credit_card_type">
             <option>Visa</option>
             <option>Mastercard</option>
@@ -25,7 +25,7 @@
           Numéros
         </label>
         <input
-          class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          class="appearance-none block w-full  text-gray-700 border border-2 border-solid border-gray-200 bg-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="credit_card_num" type="text" placeholder="**** **** **** ****" :disabled="state==false" v-model="credit_card_num">
         <p v-if="credit_card_num==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
         <p v-if="credit_card_error!=null" class="text-red-500 text-xs italic">{{ credit_card_error }}</p>
@@ -36,7 +36,7 @@
         Modifier
         <font-awesome-icon :icon="['fas', 'pencil-alt']" />
       </button>
-      <button class="ml-4 mb-1 mr-2 border rounded p-2 bg-green-200" v-on:click="state=!state">
+      <button class="ml-4 mb-1 mr-2 border rounded p-2 bg-green-200" v-on:click="checkForm">
         Enregistrer
       </button>
     </div>
@@ -55,14 +55,79 @@
     },
     data() {
       return {
-        credit_card_type:'Visa',
-        credit_card_num:'1234 1234 1234 1234',
-        state: false
+        errors:[],
+        creditCard:null,
+        credit_card_type:null,
+        credit_card_num:null,
+        credit_card_error:null,
+        state: false,
       }
+    },
+    beforeMount(){
+      this.fetch()
     },
     methods: {
       Modify(state) {
         state = !state
+      },
+      async fetch(){
+         this.creditCard= await this.$axios.$get('http://localhost:3333/creditCard')
+         this.credit_card_num = this.creditCard.creditcard.credit_card_num
+         this.credit_card_type =this.creditCard.creditcard.credit_card_type
+
+         console.log(this.creditCard.creditcard)
+      },
+      checkForm(event) {
+        console.log('checking form')
+        this.errors = []
+        this.InputSanitize();
+        this.checkInput()
+        event.preventDefault();
+        if (!this.errors.length) {
+          this.SignIn()
+          return true;
+        }
+      },
+      checkInput() {
+        if (!this.credit_card_num || this.credit_card_num == 'null') {
+          this.errors.push('restorant name required.');
+          this.credit_card_num = null
+        }
+        if (!this.credit_card_type || this.credit_card_type == 'null') {
+          this.errors.push('restorant name required.');
+          this.credit_card_type = null
+        }if (!this.validCreditCard(this.credit_card_num)){
+            this.errors.push('enter valids credit card numbers.')
+            this.credit_card_error = 'Numéro de carte invalide, ce champ ne doit comporter que 16 chiffres '
+            }
+      },
+      InputSanitize() {
+        this.credit_card_num = this.$sanitize(this.credit_card_num)
+        this.credit_card_type= this.$sanitize(this.credit_card_type)
+      },
+      validCreditCard: function (credit_card_num) {
+        let test = this.OnlyNumber(credit_card_num)
+        if(test ==true && credit_card_num.length == 16){
+          return true
+        }else{
+          return false
+        }
+      },
+      OnlyNumber(input){
+      var re = /^[0-9]+$/;
+      return re.test(input)
+      },
+      async SignIn() {
+        await this.$axios.$put('http://localhost:3333/creditCard', {
+          credit_card_type: this.credit_card_type,
+          credit_card_num : this.credit_card_num
+
+        }).then(function (response) {
+          console.log(response)
+        }).catch(error => {
+            consol.log(error.response)
+        })
+
       }
     },
   }
