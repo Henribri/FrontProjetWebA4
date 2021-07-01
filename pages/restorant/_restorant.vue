@@ -43,10 +43,10 @@
   },
   async asyncData({$axios, params }) {
       const restorer_id=params.restorant
-      const articles=await $axios.$get('http://20.74.32.244/ceseat_articles/get_articles_by_restorer',{params:{
+      const articles=await $axios.$get('http://20.74.32.244/ceseat_articles/articles-restorer',{params:{
       restorer_id:restorer_id
       }}) 
-      const menus=await $axios.$get('http://20.74.32.244/ceseat_articles/get_menus_by_restorer',{params:{
+      const menus=await $axios.$get('http://20.74.32.244/ceseat_articles/menus-restorer',{params:{
       restorer_id:restorer_id
       }})
       const panier_user=0

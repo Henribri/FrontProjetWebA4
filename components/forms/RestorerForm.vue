@@ -55,7 +55,7 @@
         restorer_address_id: null,
         restorant_name_error:null,
         state: false,
-        route : 'http://localhost:3333/restorer/' + this.restorer_id
+        route : 'http://20.74.32.244/ceseat_users/restorer/' + this.restorer_id
 
       }
     },
@@ -73,7 +73,7 @@
 
       },
       async fetch() {
-        this.restorer = await this.$axios.$get('http://localhost:3333/restorer/' + this.restorer_id)
+        this.restorer = await this.$axios.$get('http://20.74.32.244/ceseat_users/restorer/' + this.restorer_id)
         this.restorant_name = this.restorer.restorer_name
         this.restorer_address_id = this.restorer.fk_address_id
       },
@@ -95,7 +95,7 @@
         }
       },
       async SignIn() {
-        await this.$axios.$put('http://localhost:3333/restorer', {
+        await this.$axios.$put('http://20.74.32.244/ceseat_users/restorer', {
           restorer_name: this.restorant_name,
         }).then(function (response) {
           console.log(response)

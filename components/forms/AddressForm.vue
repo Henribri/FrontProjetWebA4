@@ -96,7 +96,7 @@
         street_number_state: false,
         postal_code_state: false,
         state:false,
-        route: "http://localhost:3333/address/" + this.address_type
+        route: "http://20.74.32.244/ceseat_users/address/" + this.address_type
       }
     },
     methods: {
@@ -153,7 +153,7 @@
 
       },
       async SignIn() {
-        await this.$axios.$put('http://localhost:3333/address/'+this.address_type, {
+        await this.$axios.$put('http://20.74.32.244/ceseat_users/address/'+this.address_type, {
           address_city : this.city,
           address_street: this.street,
           address_street_number : this.street_number,

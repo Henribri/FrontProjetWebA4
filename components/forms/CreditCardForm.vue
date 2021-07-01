@@ -71,7 +71,7 @@
         state = !state
       },
       async fetch(){
-         this.creditCard= await this.$axios.$get('http://localhost:3333/creditCard')
+         this.creditCard= await this.$axios.$get('http://20.74.32.244/ceseat_users/creditCard')
          this.credit_card_num = this.creditCard.creditcard.credit_card_num
          this.credit_card_type =this.creditCard.creditcard.credit_card_type
 
@@ -118,7 +118,7 @@
       return re.test(input)
       },
       async SignIn() {
-        await this.$axios.$put('http://localhost:3333/creditCard', {
+        await this.$axios.$put('http://20.74.32.244/ceseat_users/creditCard', {
           credit_card_type: this.credit_card_type,
           credit_card_num : this.credit_card_num
 
