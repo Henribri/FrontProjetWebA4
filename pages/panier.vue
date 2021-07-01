@@ -68,7 +68,7 @@ export default {
                           info:{
                             total_price:this.prix_total,
                             date:new Date().toJSON().slice(0,10).replace(/-/g,'/'),
-                            validated:true,
+                            validated:false,
                             restorer_id:menu.restorer,
                             client:
                               {
