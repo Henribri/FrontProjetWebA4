@@ -28,8 +28,9 @@
         <input
           class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="password" type="password" placeholder="******************"  v-model="password">
-        <p class="text-gray-600 text-xs italic">Faites le aussi long et fou que vous voulez</p>
+        <p class="text-gray-600 text-xs italic">Votre mot de passe doit compter au moins 8 caractères</p>
         <p v-if="password==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
+        <p v-if="password_error!=null" class="text-red-500 text-xs italic">{{ password_error }}</p>
       </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-6">
@@ -193,7 +194,8 @@
         email_taken:false,
         phone_number:null,
         credit_card_error:null,
-        phone_number_error:null
+        phone_number_error:null,
+        password_error:null
       }
     },
     methods: {
@@ -229,6 +231,10 @@
           this.errors.push('email required.');
           this.email=null
             }
+        if(this.password.length <= 8){
+            this.password_error="votre mot de passe n'est pas assez long"
+            this.errors.push('password not long enough');
+        }
         if (!this.validEmail(this.email)){
             this.errors.push('enter a valid email.')
             this.email_error = ('votre adresse email est invalide regardez bien le model :)')
