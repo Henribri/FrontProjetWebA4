@@ -93,6 +93,7 @@
         this.errors = []
         this.phone_number_error = null
         this.email_error = null
+        this.password_error =null
         this.InputSanitize()
         this.checkInput()
         event.preventDefault();
@@ -117,9 +118,11 @@
           this.errors.push('password required.');
           this.password=null
             }
-        if(this.password.length <= 8){
+        if(this.password!=null){
+          if(this.password.length < 8){
             this.password_error="votre mot de passe n'est pas assez long"
             this.errors.push('password not long enough');
+          }
         }
         if (!this.email || this.email=='null') {
           this.errors.push('email required.');

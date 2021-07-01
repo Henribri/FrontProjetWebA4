@@ -43,6 +43,7 @@
           id="email" type="email" placeholder="jaifaim@manger.com" v-model="email">
           <p v-if="email==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
           <p v-if="email_taken==true" class="text-red-500 text-xs italic">Cette adresse email est déjà prise</p>
+          <p v-if="email_error!=null" class="text-red-500 text-xs italic">{{ email_error }}</p>
       </div>
       <div class="w-full mt-2 md:w-1/2 px-3">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="last_name">
@@ -195,19 +196,23 @@
         phone_number:null,
         credit_card_error:null,
         phone_number_error:null,
-        password_error:null
+        password_error:null,
+        email_error:null
       }
     },
     methods: {
       checkForm(event) {
         console.log('checking form')
         this.email_taken=false
+        this.email_error =null
+        this.password_error=null
         this.errors = []
         this.phone_number_error = null
         this.credit_card_error = null
         this.InputSanitize();
         this.checkInput()
         event.preventDefault();
+        console.log(this.errors)
         if (!this.errors.length) {
             this.SignIn(this)
             return true;
@@ -231,12 +236,15 @@
           this.errors.push('email required.');
           this.email=null
             }
-        if(this.password.length <= 8){
+        if(this.password!=null){
+          if(this.password.length < 8){
             this.password_error="votre mot de passe n'est pas assez long"
             this.errors.push('password not long enough');
+          }
         }
         if (!this.validEmail(this.email)){
             this.errors.push('enter a valid email.')
+            console.log('invalide')
             this.email_error = ('votre adresse email est invalide regardez bien le model :)')
             }
         if (!this.validPhone(this.phone_number)){

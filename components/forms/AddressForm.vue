@@ -40,10 +40,6 @@
       </div>
     </div>
     <div class="flex justify-end items-center">
-      <button v-if="DisplayModifier"   class="ml-4 mb-1 mr-2 border rounded p-2 bg-blue-200" v-on:click="state=!state">
-        Modifier
-        <font-awesome-icon :icon="['fas', 'pencil-alt']" />
-      </button>
       <button v-if="!DisplayModifier" class="ml-4 mb-1 mr-2 border rounded p-2 bg-green-200" v-on:click="Locate()">
         Enregistrer
       </button>
