@@ -14,6 +14,7 @@
         <div class="flex flex-inline items-center">
           <h1>{{$auth.user.email}}</h1>
           <v-btn text @click="$auth.logout()">Logout</v-btn>
+          <v-btn text to="/profile">Profil</v-btn>
           <!-- user name -->
           <!-- button logout -->
         </div>

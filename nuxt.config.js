@@ -58,15 +58,15 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://20.74.18.246'
+    baseURL: 'http://20.74.32.244'
   },
   auth: {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/service_auth/login_auth', method: 'post', propertyName:'token' },
+          login: { url: '/ceseat_auth/login_auth', method: 'post', propertyName:'token' },
           logout: false ,
-          user: { url: '/service_users/user', method: 'get'}
+          user: { url: '/ceseat_users/user', method: 'get'}
         },
         tokenType: 'bearer'
       }
