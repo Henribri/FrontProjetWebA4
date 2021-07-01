@@ -91,7 +91,7 @@ export default {
           command,
           {
             headers:{
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTU5NDAyLCJleHAiOjE2MjUxNjEyMDJ9.rz7rGBeoRO0QEfzoSJKt6rH-1ZVCQ11XCJPgsllGMNY"
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTYyMDYxLCJleHAiOjE2MjUxNjM4NjF9.bXsu2ZZ5KzMEVvMIDosE94ta_wzfG6G-B0twRQLVfNs"
           }
   
           }

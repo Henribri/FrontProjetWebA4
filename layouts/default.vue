@@ -5,17 +5,8 @@
       <NuxtLink to="/">
         <div>Ceseat</div>
       </NuxtLink>
-      <NuxtLink to="/commands"><div class="navbar-onglet"> Mes commandes </div></NuxtLink>
-       <NuxtLink to="/panier"><div class="navbar-onglet"> Mon panier </div></NuxtLink>
-      <div class="flex flex-inline items-center">
-        <NuxtLink class="font-medium text-xl" to="/ClientRegister">
-          <div>Sign Up</div>
-        </NuxtLink>
-        <div class="font-medium text-xl m-2">|</div>
-        <NuxtLink class="font-medium text-xl" to="/">
-          <div>Log In</div>
-        </NuxtLink>
-      <div class="navbar-onglet"> Mes commandes </div>
+            <NuxtLink to="/commands"><div class="navbar-onglet"> Mes commandes </div></NuxtLink>
+
       <NuxtLink to="/panier">
         <div class="navbar-onglet"> Mon panier </div>
       </NuxtLink>
