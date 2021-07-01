@@ -57,17 +57,48 @@ export default {
     remove(Article){
       this.$store.commit('removeArticle', {article:Article})
     },
-        load_command(panier){
-
+        async load_command(panier){
+          
+          let req_error=true
           let commands=[]
           panier.forEach(menu=>{
                       console.log(menu.restorer)
                       if (!commands[menu.restorer]){
-                          commands[menu.restorer]={ids:{user_id:1, restorer_id:menu.restorer},articles:[]}
+                          commands[menu.restorer]={
+                          info:{
+                            total_price:this.prix_total,
+                            date:new Date().toJSON().slice(0,10).replace(/-/g,'/'),
+                            validated:true,
+                            restorer_id:menu.restorer,
+                            client:
+                              {
+                                user_id:16,
+                                firstname:"henri",
+                                lastname:"briaux",
+                                email:"henri.seb@thomas.com"
+                              },
+                            address:this.$store.state.address.address
+                          },
+                          articles:[],
+
+                          }
                       }
                       commands[menu.restorer].articles.push(menu)
+
           })
-          console.log(this.$store.state.address)
+          commands.forEach(command=>{
+          this.$axios.$post('http://localhost:3333/create_command',     
+          command,
+          {
+            headers:{
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTYyMDYxLCJleHAiOjE2MjUxNjM4NjF9.bXsu2ZZ5KzMEVvMIDosE94ta_wzfG6G-B0twRQLVfNs"
+          }
+  
+          }
+          )
+          });
+       this.$store.commit('removePanier')
+       this.$router.push('/')
 
     },
   },

@@ -5,7 +5,8 @@
       <NuxtLink to="/">
         <div>Ceseat</div>
       </NuxtLink>
-      <div class="navbar-onglet"> Mes commandes </div>
+            <NuxtLink to="/commands"><div class="navbar-onglet"> Mes commandes </div></NuxtLink>
+
       <NuxtLink to="/panier">
         <div class="navbar-onglet"> Mon panier </div>
       </NuxtLink>

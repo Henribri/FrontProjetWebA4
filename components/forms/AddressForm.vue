@@ -39,8 +39,8 @@
         <p v-if="postal_code==null" class="text-red-500 text-xs italic">Remplissez ce champs s'il vous plait.</p>
       </div>
     </div>
-    <div v-if="DisplayModifier" class="flex justify-end items-center">
-      <button   class="ml-4 mb-1 mr-2 border rounded p-2 bg-blue-200" v-on:click="state=!state">
+    <div class="flex justify-end items-center">
+      <button v-if="DisplayModifier"   class="ml-4 mb-1 mr-2 border rounded p-2 bg-blue-200" v-on:click="state=!state">
         Modifier
         <font-awesome-icon :icon="['fas', 'pencil-alt']" />
       </button>
