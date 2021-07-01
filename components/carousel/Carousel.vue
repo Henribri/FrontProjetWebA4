@@ -41,7 +41,7 @@
     },
 
     async fetch(){
-      this.restorers=await this.$axios.$get('http://20.74.18.246/service_users/restorers')
+      this.restorers=await this.$axios.$get('http://20.74.32.244/ceseat_users/restorers')
 
     }
 

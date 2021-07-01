@@ -18,22 +18,20 @@ export default{
     async asyncData({$axios}) {
     let commands= await $axios.$get('http://localhost:3333/get_historic_command',{ 
           headers:{
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTQzNDM4LCJleHAiOjE2MjUxNDUyMzh9.bhH1YWhm55v_BmxSp2FF29C6r2tQAGR43VWr7x6Ef9s"
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTU4NDY2LCJleHAiOjE2MjUxNjAyNjZ9.AXEugiNx3aDsFfcskfABCpgtRWIgSrTgMFIJF0j0SlQ"
           }}) 
-
-
     return {commands}
 
 
     },
-    computed:{
-      getRestorerName(){
-        //get user by id
-        /*const restorer_name=$axios.$get('http://20.74.18.246/service_user/get_u'
-        
+    methods:{
+     /*getRestorerName(restorer_id){
+        let restorer_name= this.$axios.$get('http://20.74.32.244/ceseat_users/restorer/'+restorer_id,{
+          headers:{
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MTU0NDE3LCJleHAiOjE2MjUxNTYyMTd9.xlQi0NMhrTNc3DtkUohvj8rjOkPWPhUUbYSfRTJV2s8"
+          }})
 
-        return restorer_name*/
-      }
+      }*/
 
     }
 
