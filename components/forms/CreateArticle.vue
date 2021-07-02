@@ -32,7 +32,7 @@
       </div>
     </div>
     <p class="flex justify-end">
-      <button type="submit" value="submit" class="rounded bg-green-200 p-2 " @click="checkForm">Sign In</button>
+      <button type="submit" value="submit" class="rounded bg-green-200 p-2 " @click="checkForm">Créer</button>
     </p>
   </form>
 
@@ -62,17 +62,17 @@
         event.preventDefault();
         },
     checkInput(){
-        if (!this.first_name || this.first_name=='null') {
-          this.errors.push('firstname required.');
-            this.first_name=null
+        if (!this.article_name || this.article_name=='null') {
+          this.errors.push('Article name required.');
+            this.article_name=null
             }
-        if (!this.last_name|| this.last_name=='null') {
-          this.errors.push('lastname required.');
-          this.last_name=null
+        if (!this.article_description|| this.article_description=='null') {
+          this.errors.push('Article description required.');
+          this.article_description=null
             }
-        if (!this.password|| this.password=='null') {
-          this.errors.push('password required.');
-          this.password=null
+        if (!this.article_price|| this.article_price=='null') {
+          this.errors.push('Article price required.');
+          this.article_price=null
             }
     },
     OnlyNumber(input){
@@ -80,26 +80,19 @@
       return re.test(input)
     },
     InputSanitize(){
-        this.first_name = this.$sanitize(this.first_name)
-        this.last_name = this.$sanitize(this.last_name)
-        this.password = this.$sanitize(this.password)
-        this.phone_number = this.$sanitize(this.phone_number)
+        this.article_name = this.$sanitize(this.article_name)
+        this.article_description = this.$sanitize(this.article_description)
+        this.article_price = this.$sanitize(this.article_price)
     },
-    async SignIn(){
+    async CreateArticle(){
       await this.$axios.$post('http://20.74.32.244/ceseat_articles/article',{
-          user_firstname: this.first_name,
-          user_lastname: this.last_name,
-          user_email: this.email,
-          user_password: this.password,
-          user_phone_number: this.phone_number,
+          article_name: this.article_name,
+          article_description: this.article_description,
+          article_price: this.article_price,
       }).then(function (response){
           console.log(response)
       }).catch(error => {
-          if(error.response.data.code =="email"){
-              this.email_taken = true
-          }else{
-              consol.log(error.response)
-          }
+          consol.log(error.response)
       })
 
     }
