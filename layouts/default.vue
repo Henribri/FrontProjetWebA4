@@ -5,13 +5,15 @@
       <NuxtLink to="/">
         <div>Ceseat</div>
       </NuxtLink>
-            <NuxtLink to="/commands"><div class="navbar-onglet"> Mes commandes </div></NuxtLink>
-
-      <NuxtLink to="/panier">
-        <div class="navbar-onglet"> Mon panier </div>
-      </NuxtLink>
-
       <div v-if="$auth.loggedIn" class="">
+        <NuxtLink to="/commands"><div class="navbar-onglet"> Mes commandes </div></NuxtLink>
+        <NuxtLink v-if="this.$auth.user.fk_role_id === 3" to="/Article"><div class="navbar-onglet"> Création d'article </div></NuxtLink>
+
+        <NuxtLink to="/panier">
+          <div class="navbar-onglet"> Mon panier </div>
+        </NuxtLink>
+
+      
         <div class="flex flex-inline items-center">
           <NuxtLink class="font-medium text-xl" to="/login">
             <div @click="$auth.logout()">Logout</div>

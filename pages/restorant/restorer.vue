@@ -14,7 +14,7 @@
                         <b class="text-right"> Prix total : {{menus.info.total_price}} €    </b>
                     </div>
                     <div class="flex flex-col">
-                        <button  class='relative bg-blue-500 text-white p-6 rounded text-2xl font-bold overflow-hidden'>
+                        <button @click="ValidCommand(menus.id)"  class='relative bg-blue-500 text-white p-6 rounded text-2xl font-bold overflow-hidden'>
                             Valider
                         </button>
                     </div>
@@ -36,8 +36,18 @@ export default {
                 Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MjA5Mjk2LCJleHAiOjE2MjUyMTEwOTZ9.8HY8VQDWp0w_aaQnXNaskxSRyoo-aFBT6envJh2mG50"
             }}) 
         return {commands}
+    },
+    async ValidCommand(command_id){
+      await this.$axios.$patch('http://20.74.32.244/ceseat_commands/validate', command_id
+      ).then(function (response){
+          console.log(response)
+          this.$router.push('/delivery/delivery')
+      }).catch(error => {
+            consol.log(error.response)
+      })
 
     }
+
 }
 </script>
 
