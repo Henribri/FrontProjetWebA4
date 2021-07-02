@@ -1,16 +1,18 @@
 <template>
   
 <div class="flex flex-col items-center ">
-    <b class="text-6xl mb-5">les commandes à valider</b>
+    <b class="text-6xl mb-5">les livraisons à prendre en charge</b>
+    <div class="flex justify-center content-center flex-col" v-for="command in commands" :key="command.id">
         <div class="flex justify-center content-center flex-col  " v-for="menus in commands" :key="menus.id">
-            <div  v-if="menus.info.validated === false ">
+            <div v-if="menus.info.validated === true ">
                 <div class="flex flex-wrap justify-between flex-row py-4 px-8 bg-white shadow-lg rounded-lg my-20"> 
                     <div class="flex flex-col">        
                         <h2 class="text-gray-800 text-3xl font-semibold">Commandé le : {{menus.info.date}} par {{menus.info.client.firstname}} {{menus.info.client.lastname}}</h2>
                         <li v-for="article in menus.articles" :key="article.id" >{{article.name}}</li>
                     </div>
                     <div class="flex flex-col">
-                        <b class="text-right"> Adresse : {{menus.info.address.street_number}} {{menus.info.address.street}}, {{menus.info.address.city}}, {{menus.info.address.postal_code}}    </b>
+                        <b class="text-right"> Restorant  : nom  </b>
+                        <b class="text-right"> Adresse Client : {{menus.info.address.street_number}} {{menus.info.address.street}}, {{menus.info.address.city}}, {{menus.info.address.postal_code}}    </b>
                         <b class="text-right"> Prix total : {{menus.info.total_price}} €    </b>
                     </div>
                     <div class="flex flex-col">
@@ -21,6 +23,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </div> 
 
 </template>
@@ -36,7 +39,6 @@ export default {
                 Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNiwiaWF0IjoxNjI1MjA5Mjk2LCJleHAiOjE2MjUyMTEwOTZ9.8HY8VQDWp0w_aaQnXNaskxSRyoo-aFBT6envJh2mG50"
             }}) 
         return {commands}
-
     }
 }
 </script>

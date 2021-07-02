@@ -26,6 +26,9 @@ import Carousel from '../components/carousel/Carousel'
             if(this.$auth.loggedIn && this.$auth.user.fk_role_id === 3){
                 this.$router.push('/restorant/restorer')
             }
+            else if(this.$auth.loggedIn && this.$auth.user.fk_role_id === 2){
+                this.$router.push('/delivery/delivery')
+            }
         }
     }
 </script> 
