@@ -63,9 +63,6 @@ export default {
   auth: {
     strategies: {
       local: {
-        token:{
-          required:true,
-        },
         endpoints: {
           login: { url: '/ceseat_auth/login', method: 'post', propertyName:'token' },
           logout: false ,
