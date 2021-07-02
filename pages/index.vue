@@ -13,17 +13,23 @@ Quel restaurant vous fait envie aujourd'hui ?
 </template>
 
 <script>
-    import Carousel from '../components/carousel/Carousel'
-
-        export default{
+import Carousel from '../components/carousel/Carousel'
+    export default{
         data(){
             return {
                 components:{
                     Carousel,
                 }
             }
+        },
+        beforeCreate(){
+            if(this.$auth.loggedIn && this.$auth.user.fk_role_id === 3){
+                this.$router.push('/restorant/restorer')
+            }
+            else if(this.$auth.loggedIn && this.$auth.user.fk_role_id === 2){
+                this.$router.push('/delivery/delivery')
+            }
         }
-        
     }
 </script> 
 

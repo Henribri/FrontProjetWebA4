@@ -5,7 +5,7 @@
       v-for="menus in commands.data" :key="menus.id">
       <div class="flex flex-wrap justify-between flex-row py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex flex-col">
-          <h2 class="text-gray-800 text-3xl font-semibold">{{menus.info.date}}</h2>
+          <h2 class="text-gray-800 text-3xl font-semibold">{{ menus.info.restorer}} le {{menus.info.date}}</h2>
           <li v-for="article in menus.articles" :key="article.id">{{article.name}}</li>
         </div>
         <div class="flex flex-col"><b class="text-right">Adresse : {{menus.info.address.street_number}}
@@ -14,6 +14,8 @@
             <b
             class="text-right flex justify-end">Etat : <div v-if='menus.info.validated==false'> En Attente</div> <div v-if='menus.info.validated==true'> En route !</div></b>
             </div>
+
+
       </div>
     </div>
   </div>
@@ -23,23 +25,27 @@
   export default {
     data() {
       return {
-        commands: []
+        commands: [],
       }
     },
     async fetch() {
+      this.commands =[]
       this.commands = await this.$axios.get('http://20.74.32.244/ceseat_commands/commands')
       console.log('fetched')
       console.log(this.commands.data)
-
+      this.commands.data.forEach(async command => {
+          console.log('test')
+          command.info.restorer = await this.$axios.$get('http://20.74.32.244/ceseat_users/restorer/'+command.info.restorer_id)
+          command.info.restorer = command.info.restorer.restorer_name
+          console.log(command.info.restorer)
+          this.$forceUpdate()
+      });
     },
     methods: {
       refresh() {
         if (this.$fetchState.timestamp <= Date.now() - 30000) {
           this.$fetch()
         }
-      },
-      mounted() {
-        this.fetch()
       },
       /*getRestorerName(restorer_id){
          let restorer_name= this.$axios.$get('http://20.74.32.244/ceseat_users/restorer/'+restorer_id,{
@@ -49,7 +55,10 @@
 
        }*/
 
-    }
+    },
+     async beforeCreate(){
+       await this.$fetch()
+     }
 
   }
 
