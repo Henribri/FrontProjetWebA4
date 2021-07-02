@@ -1,5 +1,5 @@
 <template>
-  <div id='resto' >
+  <div id='restorant' >
     <img src="https://www.zuerich.com/sites/default/files/web_zuerich_kindli_restaurant_1600x900_8375.jpg"
       class=" h-52 w-full object-cover ">
     <div class=" w-full object-cover block">
@@ -38,14 +38,14 @@
 <script>
   import ArticleCard from '~/components/ArticleCard.vue'
   export default {
-  name : 'resto',
+  name : 'restorant',
   components: { ArticleCard
   },
   async asyncData({$axios, params }) {
       const restorer_id=params.restorant
       const articles=await $axios.$get('http://20.74.32.244/ceseat_articles/articles-restorer',{params:{
       restorer_id:restorer_id
-      }}) 
+      }})
       const menus=await $axios.$get('http://20.74.32.244/ceseat_articles/menus-restorer',{params:{
       restorer_id:restorer_id
       }})
@@ -61,7 +61,7 @@
      this.panier_user=this.$store.getters.paniers.find(panier => panier.id.user_id==1)
 */
 
-    
+
     },
 
   }

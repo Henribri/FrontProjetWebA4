@@ -41,7 +41,7 @@
       ArticleDescription: String,
       ArticlePrice: String,
       Article:Object,
-      Restorer_id
+      Restorer_id:Number,
 
 
 
